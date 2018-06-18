@@ -1,0 +1,28 @@
+<h1 mat-dialog-title>Add contact to project</h1>
+<form [formGroup]="addContactToProjectForm">
+  <div mat-dialog-content>
+
+    <mat-form-field style="width:90%">
+      <input matInput readonly formControlName="projectName">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Select contact" formControlName="selectedContact" name="selectedContact">
+        <mat-option *ngFor="let eachContact of contacts" [value]="eachContact.id">
+          {{eachContact.firstName}}-{{eachContact.lastName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-12" style="text-align:right">
+      <div mat-dialog-actions style="width:90%">
+        <button mat-button (click)="onCancelClick()">Cancel</button>
+        <button mat-button (click)="onSaveClick()" cdkFocusInitial>Save</button>
+      </div>
+    </div>
+  </div>
+
+</form>

@@ -1,0 +1,53 @@
+<h1 mat-dialog-title>Create contact</h1>
+<form [formGroup]="contactForm">
+  <div mat-dialog-content>
+    <mat-form-field style="width:90%">
+      <input matInput formControlName="firstName" placeholder="Enter first name">
+    </mat-form-field>
+    <div *ngIf="submitted &&
+                f.controls.firstName.errors != null &&
+                f.controls.firstName.errors.required == true">
+      <div class="invalid-feedback">
+        First Name is required
+      </div>
+    </div>
+
+    <mat-form-field style="width:90%">
+      <input matInput formControlName="lastName" placeholder="Enter last name">
+    </mat-form-field>
+    <div *ngIf="submitted &&
+                f.controls.lastName.errors != null &&
+                f.controls.lastName.errors.required == true">
+      <div class="invalid-feedback">
+        Last Name is required
+      </div>
+    </div>
+
+    <mat-form-field style="width:90%">
+      <input matInput formControlName="email" placeholder="Enter email">
+    </mat-form-field>
+
+    <div *ngIf="submitted && f.controls.email.errors != null">
+      <div class="invalid-feedback" *ngIf="f.controls.email.errors.required">
+        Email is required
+      </div>
+      <div class="invalid-feedback" *ngIf="f.controls.email.errors.email">
+        Invalid email format
+      </div>
+    </div>
+
+    <mat-form-field style="width:90%">
+      <textarea rows="3" matInput formControlName="address" placeholder="Enter address"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12" style="text-align:right">
+      <div mat-dialog-actions style="width:90%">
+        <button mat-button (click)="onCancelClick()">Cancel</button>
+        <button mat-button (click)="onSaveClick()" cdkFocusInitial>Save</button>
+      </div>
+    </div>
+  </div>
+  
+</form>
